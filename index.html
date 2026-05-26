@@ -16,27 +16,80 @@
 
 body{
     background-image:url('iphone_responsive.jpg');
-     background-size:cover;
+    background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
 
     min-height:100vh;
+
     display:flex;
     justify-content:center;
-    align-items:center;
-    overflow:hidden;
+    align-items:flex-start;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding:20px 0;
+
     color:white;
+}
+
+.generated-date {
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    animation: floaty 2s ease-in-out infinite;
+}
+
+.generated-options {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.generated-option {
+    animation: popIn 0.4s ease;
+}
+
+@keyframes floaty {
+    0%,100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .container{
     width:92%;
     max-width:420px;
+
     background:rgba(255,255,255,0.15);
     backdrop-filter:blur(12px);
+
     border-radius:28px;
     padding:28px 22px;
     text-align:center;
+
     box-shadow:0 10px 30px rgba(0,0,0,0.15);
+
+    margin:20px 0;
 }
 
 .page{
@@ -202,6 +255,18 @@ select option{
     transition:0.2s ease;
 }
 
+
+.generated-options {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#generatedDatePage{
+    padding-bottom:40px;
+}
+
 .time-wrapper:focus-within{
     transform:scale(1.02);
     background:rgba(255,255,255,0.28);
@@ -227,6 +292,44 @@ select option{
     left:0;
 }
 
+.pic{ 
+    width:100%;
+    max-width:320px;
+
+    height:280px;
+    object-fit:cover;
+    object-position:center;
+
+    border-radius:22px;
+    margin-bottom:20px;
+}
+
+.back-btn{
+    width:auto;
+    padding:10px 16px;
+
+    margin-top:0;
+    margin-bottom:14px;
+
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    font-size:0.95rem;
+    font-weight:600;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.18);
+    color:white;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:none;
+
+    align-self:flex-start;
+}
+
 </style>
 </head>
 <body>
@@ -235,8 +338,7 @@ select option{
 
     <!-- PAGE 1 -->
     <div class="page active" id="page1">
-        <img class="gif" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGVhaGE0b3FxOWUwaWZwYnR6OG8weHY3ejhiaWp1MWd3MmF6OHA1OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/57Ioe1rrA1fpjLLMSK/giphy.gif" alt="cute gif">
-        <h1>will you hang out with me tonight? 🥺</h1>
+      <img class="pic" src="meganonbed.webp" alt="cute pic">  <h1>do you want to schedule a date with Meghan? 🥺</h1>
         <button onclick="nextPage(2)">yes obviously</button>
         <div class="option"
 style="opacity:0.7; cursor:not-allowed; pointer-events:none; margin-top:14px;">
@@ -246,62 +348,315 @@ style="opacity:0.7; cursor:not-allowed; pointer-events:none; margin-top:14px;">
 
     <!-- PAGE 2 -->
     <div class="page" id="page2">
-        <img class="gif" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnY3dzcwNmphNGptM251NHMzMWdpOHF4eWc2YTFxOW1qZTFhNHNzdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VxXIQdrklYsf9YXevX/giphy.gif" alt="cute gif">
-        <h1>omg you said yes...</h1>
+        <button class="back-btn" onclick="nextPage(1)">
+   ‹ back
+   </button>
+       <img class="pic" src="joshreading.webp" alt="cute pic">  
+       <h1>omg you said yes...</h1>
         <p>when will you hang out with me?</p>
 
         <select id="timeChoice">
+             <option>Morning</option>
+            <option>Afternoon</option>
             <option>Tonight</option>
             <option>Right after work</option>
-            <option>Late evening vibes</option>
         </select>
 
         <button onclick="nextPage(3)">continue sir</button>
     </div>
 
-
     <!-- PAGE 3 -->
-    <div class="page" id="page3">
-          <img class="gif" src="https://64.media.tumblr.com/d25c7339bce8c61b983945a85746674d/bcbc3c70cdd104fb-ee/s540x810/69e475c69ff7da2b24900b8b40fc011b80946c55.gif" alt="cute gif">
-        <h1>when are you free?</h1>
+<div class="page" id="page3">
+    <button class="back-btn" onclick="nextPage(2)">
+   ‹ back
+    </button>
+    <img class="pic" src="trainpic.webp" alt="cute pic" style="
+            width:100%;
+            max-width:320px;
+            height:380px;
+            object-fit:cover;
+            object-position:center top;
+            border-radius:22px;
+            margin-bottom:20px;
+        "
+    alt="cute gif">
 
-        <input type="date" id="dateInput">
-         <div class="time-wrapper">
-    <input type="time" id="timeInput">
-</div>
+    <h1>when are you free?</h1>
 
- <button onclick="validatePage3()">next</button>
+    <input type="date" id="dateInput">
+
+    <div class="time-wrapper">
+        <input type="time" id="timeInput">
     </div>
 
-    <!-- PAGE 4 -->
-    <div class="page" id="page4">
-        <img class="gif" src="https://giffiles.alphacoders.com/221/221682.gif" alt="cute gif">
-        <h1>what do we wanna do?</h1>
+    <button onclick="validatePage3()">next</button>
 
-        <div class="options">
-            <div class="option" onclick="selectOption(this, '🛋️ cuddle and chill at home')">
-                🛋️ cuddle and chill at home
-            </div>
-
-            <div class="option" onclick="selectOption(this, '🍹 drink on beach in evening')">
-                🍹 drink on beach in evening
-            </div>
-
-            <div class="option" onclick="selectOption(this, '🍝 cook dinner together')">
-                🍝 cook dinner together
-            </div>
-
-            <div class="option disabled">
-    🫠 bedrot separately in misery
 </div>
+
+
+<!-- NEW PAGE BEFORE PAGE 4 -->
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+<button class="back-btn" onclick="nextPage(3)">
+   ‹ back
+   </button>
+    <img class="pic" src="cutecherrypic.webp" alt="cute pic">  
+    <h1>how should we pick our silly little date?</h1>
+
+    <div class="options">
+
+        <div class="option" onclick="goToGeneratedDate()">
+            ✨ pick a date for us
         </div>
 
-        <button onclick="finish()">finalise our silly little plans</button>
+         <div class="option" onclick="nextPage('suggestPage')">
+    ✨ suggest a date for us
+</div>
+
+        <div class="option" onclick="nextPage(5)">
+            🩷 pick our date from the full list
+        </div>
+
+        <div class="option" onclick="generateThreeDates()">
+            🎲 generate me a few date ideas
+        </div>
+
     </div>
 
-    <!-- PAGE 5 -->
-   <!-- PAGE 5 -->
+</div>
+
+<!-- GENERATED DATE PAGE -->
+<div class="page" id="generatedDatePage">
+<button class="back-btn" onclick="nextPage(4)">
+   ‹ back
+</button>
+    <img class="gif" src="https://media.tenor.com/x8v1oNUOmg4AAAAC/anime-love.gif" alt="cute gif">
+
+    <h1>your date idea is...</h1>
+
+    <div id="generated-date-box" class="generated-date">
+        🍝 cook dinner together
+    </div>
+
+    <div id="generated-options" class="generated-options"></div>
+
+    <button onclick="goToGeneratedDate()">
+        🔄 generate another
+    </button>
+
+    <button onclick="acceptGeneratedDate()">
+    💖 this one is cute
+</button>
+
+   <button onclick="nextPage(5)">
+        🩷 pick manually instead
+    </button>
+
+</div>
+
+<!-- SUGGEST A DATE PAGE -->
+<div class="page" id="suggestPage">
+<button class="back-btn" onclick="nextPage(4)">
+   ‹ back
+</button>
+    <img class="gif"
+    src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnNqYmRwa2J3dHVneWZoYTNsbmV5bXo2NDJ1ZXZnemZwcTQ4aTdlaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vFKqnCdLPNOKc/giphy.gif"
+    alt="cute gif">
+
+    <h1>ok then suggest something 😌</h1>
+
+    <input
+        type="text"
+        id="customDateIdea"
+        placeholder="e.g. sushi date, beach walk, rob a bank together"
+    >
+
+    <button onclick="submitCustomDate()">
+        💖 wait thats adorable
+    </button>
+
+</div>
+
+<!-- PAGE 5 -->
 <div class="page" id="page5">
+<button class="back-btn" onclick="nextPage(4)">
+   ‹ back
+</button>
+    <img class="gif"
+    src="https://giffiles.alphacoders.com/221/221682.gif"
+    alt="cute gif">
+
+    <h1>what do we wanna do?</h1>
+
+    <div class="options">
+
+        <!-- cozy -->
+        <div class="option" onclick="selectOption(this, '🛋️ cuddle and chill at home')">
+            🛋️ cuddle and chill at home
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🎬 movie night at mine')">
+            🎬 movie night at mine
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🍿 movie night at yours')">
+            🍿 movie night at yours
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🍝 cook dinner together')">
+            🍝 cook dinner together
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🧁 bake something chaotic together')">
+            🧁 bake something chaotic together
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🎮 gaming date night')">
+            🎮 gaming date night
+        </div>
+
+        <div class="option" onclick="selectOption(this, '☕ coffee and yap session')">
+            ☕ coffee and yap session
+        </div>
+
+        <div class="option" onclick="selectOption(this, '📚 read beside each other in silence like an old married couple')">
+            📚 read beside each other in silence like an old married couple
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🛏️ lazy pyjama day together')">
+            🛏️ lazy pyjama day together
+        </div>
+
+        <!-- outside -->
+        <div class="option" onclick="selectOption(this, '🌳 picnic in the park')">
+            🌳 picnic in the park
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🐶 dog walk together')">
+            🐶 dog walk together
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🌅 sunset walk')">
+            🌅 sunset walk
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🍹 drinks on the beach in the evening')">
+            🍹 drinks on the beach in the evening
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🚶‍♀️ random walk with no destination')">
+            🚶‍♀️ random walk with no destination
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🛍️ dublin shopping date')">
+            🛍️ dublin shopping date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '📸 cute photo day together')">
+            📸 cute photo day together
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🚲 bike ride date')">
+            🚲 bike ride date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🌊 seaside date')">
+            🌊 seaside date
+        </div>
+
+        <!-- proper dates -->
+        <div class="option" onclick="selectOption(this, '🍽️ go out for dinner')">
+            🍽️ go out for dinner
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🍣 sushi date')">
+            🍣 sushi date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🍕 pizza date')">
+            🍕 pizza date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🍜 ramen date')">
+            🍜 ramen date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🍨 dessert date')">
+            🍨 dessert date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🎳 bowling date')">
+            🎳 bowling date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🎡 arcade date')">
+            🎡 arcade date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🎬 cinema date')">
+            🎬 cinema date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🖼️ museum/gallery date')">
+            🖼️ museum/gallery date
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🎤 karaoke date')">
+            🎤 karaoke date
+        </div>
+
+        <!-- chaos -->
+        <div class="option" onclick="selectOption(this, '🧸 thrift shop challenge')">
+            🧸 thrift shop challenge
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🛒 supermarket snack raid')">
+            🛒 supermarket snack raid
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🧃 trying weird drinks together')">
+            🧃 trying weird drinks together
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🕯️ pretend fancy wine night')">
+            🕯️ pretend fancy wine night
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🎨 paint together badly')">
+            🎨 paint together badly
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🧩 puzzle night')">
+            🧩 puzzle night
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🪴 garden centre date for absolutely no reason')">
+            🪴 garden centre date for absolutely no reason
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🕺 spontaneous late-night drive')">
+            🕺 spontaneous late-night drive
+        </div>
+
+        <div class="option" onclick="selectOption(this, '🌧️ stay inside while it rains and do nothing')">
+            🌧️ stay inside while it rains and do nothing
+        </div>
+
+        <!-- cursed -->
+        <div class="option disabled">
+            🫠 bedrot separately in misery
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- PAGE 6 -->
+   <!-- PAGE 6 -->
+<div class="page" id="page6">
+      <button class="back-btn" onclick="nextPage(5)">
+   ‹ back
+   </button>
     <img class="gif"
     src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2E3dWsxN3Vkbmx1ZmFicTBic2UwYm1vZjN2dW1jcWF6dDg1anJxeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5etWclPMB7yDtTdP4U/giphy.gif"
     alt="cute gif">
@@ -320,21 +675,32 @@ style="opacity:0.7; cursor:not-allowed; pointer-events:none; margin-top:14px;">
 <script>
 let selectedActivity = "";
 
-function nextPage(pageNumber){
+function nextPage(pageId){
+
     document.querySelectorAll('.page').forEach(page=>{
         page.classList.remove('active');
     });
 
-    document.getElementById('page' + pageNumber).classList.add('active');
+    if(typeof pageId === "number"){
+        document.getElementById('page' + pageId).classList.add('active');
+    } else {
+        document.getElementById(pageId).classList.add('active');
+    }
 }
-
+   
 function selectOption(element, activity){
+
     document.querySelectorAll('.option').forEach(opt=>{
         opt.classList.remove('selected');
     });
 
     element.classList.add('selected');
+
     selectedActivity = activity;
+
+    setTimeout(()=>{
+        finish();
+    }, 400);
 }
 
 function validatePage3(){
@@ -353,6 +719,104 @@ function validatePage3(){
     }
 
     nextPage(4);
+}
+
+const allDates = [
+
+    "🛋️ cuddle and chill at home",
+    "🎬 movie night at mine",
+    "🍿 movie night at yours",
+    "🍝 cook dinner together",
+    "🧁 bake something chaotic together",
+    "🎮 gaming date night",
+    "☕ coffee and yap session",
+    "📚 read beside each other in silence like an old married couple",
+    "🛏️ lazy pyjama day together",
+
+    "🌳 picnic in the park",
+    "🐶 dog walk together",
+    "🌅 sunset walk",
+    "🍹 drinks on the beach in the evening",
+    "🚶‍♀️ random walk with no destination",
+    "🛍️ dublin shopping date",
+    "📸 cute photo day together",
+    "🚲 bike ride date",
+    "🌊 seaside date",
+
+    "🍽️ go out for dinner",
+    "🍣 sushi date",
+    "🍕 pizza date",
+    "🍜 ramen date",
+    "🍨 dessert date",
+    "🎳 bowling date",
+    "🎡 arcade date",
+    "🎬 cinema date",
+    "🖼️ museum/gallery date",
+    "🎤 karaoke date",
+
+    "🧸 thrift shop challenge",
+    "🛒 supermarket snack raid",
+    "🧃 trying weird drinks together",
+    "🕯️ pretend fancy wine night",
+    "🎨 paint together badly",
+    "🧩 puzzle night",
+    "🪴 garden centre date for absolutely no reason",
+    "🕺 spontaneous late-night drive",
+    "🌧️ stay inside while it rains and do nothing"
+
+];
+
+function randomDate() {
+    return allDates[Math.floor(Math.random() * allDates.length)];
+}
+
+function goToGeneratedDate() {
+
+    nextPage('generatedDatePage');
+
+    document.getElementById("generated-date-box").innerText = randomDate();
+
+    document.getElementById("generated-options").innerHTML = "";
+}
+
+function generateThreeDates() {
+
+    nextPage('generatedDatePage');
+
+    let shuffled = [...allDates].sort(() => 0.5 - Math.random());
+
+    let picks = shuffled.slice(0, 3);
+
+    let html = "";
+
+    picks.forEach(date => {
+        html += `
+       <div class="option generated-option"
+onclick="selectGeneratedDate(this, '${date}')">
+    ${date}
+</div>
+        `;
+    });
+
+    document.getElementById("generated-options").innerHTML = html;
+
+    document.getElementById("generated-date-box").innerText =
+        "✨ choose your fate";
+}
+
+function selectGeneratedDate(element, activity){
+
+    document.querySelectorAll('.generated-option').forEach(opt=>{
+        opt.classList.remove('selected');
+    });
+
+    element.classList.add('selected');
+
+    selectedActivity = activity;
+
+    setTimeout(()=>{
+        finish();
+    }, 500);
 }
 
 function finish(){
@@ -384,7 +848,30 @@ function finish(){
         })
     });
 
-    nextPage(5);
+    nextPage(6);
+}
+
+function acceptGeneratedDate(){
+
+    selectedActivity =
+        document.getElementById("generated-date-box").innerText;
+
+    finish();
+}
+
+function submitCustomDate(){
+
+    const customIdea =
+        document.getElementById("customDateIdea").value.trim();
+
+    if(!customIdea){
+        alert("u have to type something first 😭");
+        return;
+    }
+
+    selectedActivity = customIdea;
+
+    finish();
 }
 
 document.getElementById('dateInput').valueAsDate = new Date(); 
